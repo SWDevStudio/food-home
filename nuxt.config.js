@@ -11,7 +11,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '@/assets/main.styl'
@@ -44,7 +47,10 @@ export default {
     ]
   },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    // proxy: true,
+    baseURL: 'http://go-trs.com/'
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

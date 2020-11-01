@@ -1,5 +1,5 @@
 <template>
-  <div class="main container">
+  <div class="main container container--solid">
     <div class="main__line">
       <div
         v-for="(item, key) in topMenu"
@@ -46,19 +46,33 @@
 </template>
 
 <script>
-import VInput from '~/components/form/v-input'
 import topMenu from '~/data/topMenu'
 import bottomMenu from '~/data/bottomMenu'
-import Button from '~/components/common/Button'
 
 export default {
-  // eslint-disable-next-line vue/no-unused-components
-  components: { Button, VInput },
+  layout: 'main-page',
   data () {
     return {
       topMenu,
       bottomMenu
     }
+  },
+  mounted () {
+    this.$axios.$get('http://go-trs.com/api/product/read_one', {
+      params: {
+        id: 1
+      }
+    }).then((res) => {
+      console.log(res)
+    }).catch(e => console.log(e))
+    this.$axios.$post('http://go-trs.com/auth/api/login', {
+      params: {
+        email: 'test@example.com',
+        password: '123'
+      }
+    }).then((res) => {
+      console.log(res)
+    }).catch(e => console.log(e))
   }
 }
 </script>

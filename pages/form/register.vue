@@ -12,13 +12,24 @@
         </n-link>
       </div>
       <h2 class="form-page__title title">
-        Войти
+        Регистрация
       </h2>
       <form class="form-page__form form">
+        <v-input
+          v-model="formData.name"
+          name="Имя"
+          class="form__input"
+        />
         <v-input
           v-model="formData.email"
           name="E-mail"
           type="email"
+          class="form__input"
+        />
+        <v-select
+          v-model="formData.howAreYou"
+          name="Кто вы?"
+          :options="optionsSelect"
           class="form__input"
         />
         <v-input
@@ -32,41 +43,47 @@
           :disabled="!fullForm"
           @click.prevent="sendForm()"
         >
-          Войти
+          Регистрация
         </button>
       </form>
-      <div class="form-page__links">
-        <n-link
-          to="/form/register"
-          class="form-page__link link"
-        >
-          Регистрация
-        </n-link>
-        <n-link
-          to="/"
-          class="form-page__link link"
-        >
-          Забыли пароль?
-        </n-link>
-      </div>
+      <n-link
+        to="/form/login"
+        class="form-page__link link"
+      >
+        Войти
+      </n-link>
     </div>
   </section>
 </template>
 
 <script>
-import VInput from '@/components/form/v-input'
-import formMixins from '@/mixins/formMixins'
+import VSelect from '~/components/form/v-select'
+import VInput from '~/components/form/v-input'
+import FormMixins from '~/mixins/formMixins'
 export default {
   name: 'Login',
+  components: { VSelect, VInput },
+  mixins: [FormMixins],
   layout: 'empty',
-  components: { VInput },
-  mixins: [formMixins],
   data () {
     return {
+      errorMessage: '',
+      optionsSelect: [
+        'Клиент',
+        'Курьер',
+        'Компания'
+      ],
       formData: {
+        name: '',
         email: '',
+        howAreYou: '',
         password: ''
       }
+    }
+  },
+  methods: {
+    sendForm () {
+      this.$store.commit('errors/SUMMON_USER_ALERT', 'Опять работа')
     }
   }
 }

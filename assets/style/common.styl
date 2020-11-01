@@ -1,14 +1,17 @@
-a {
-  text-decoration: none;
-  color: inherit;
-  &:visited {
-    color: inherit;
-  }
+.link {
+  font-family $font
+  color $color__theme
+  text-decoration none
+  font-size $size__text
 }
+
+
 body {
   margin: 0;
   padding: 0;
 }
+p {margin: 0}
+input, button {outline:none;}
 
 .container {
   box-sizing: border-box;
@@ -16,6 +19,15 @@ body {
   max-width: 768px;
   margin: 0 auto;
   padding: 0 16px;
+  display flex
+  flex-direction column
+  flex  1 1 auto
+  &--row {
+    flex-direction row
+  }
+  &--solid {
+    flex 0 1 auto
+  }
 }
 
 .title {

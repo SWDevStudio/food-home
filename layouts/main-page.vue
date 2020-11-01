@@ -1,17 +1,18 @@
 <template>
   <div class="app">
     <Alert />
-    <Header class="app__header" />
+    <Header class="app__header" :geo="true" />
     <Nuxt class="app__content" />
+    <v-footer class="app__footer" />
   </div>
 </template>
 
 <script>
 import Alert from '@/components/common/Alert'
 import Header from '~/components/common/Header'
-
+import VFooter from '~/components/common/Footer'
 export default {
-  components: { Alert, Header }
+  components: { Alert, VFooter, Header }
 }
 </script>
 <style lang="stylus">

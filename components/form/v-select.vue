@@ -1,7 +1,7 @@
 <template>
   <div class="select">
     <p class="select__title">
-      {{ title }}
+      {{ name }}
     </p>
     <p
       class="select__header"
@@ -51,7 +51,7 @@ export default {
 }
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
 selectArrow(){
   content ""
   position absolute
