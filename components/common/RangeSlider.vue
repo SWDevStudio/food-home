@@ -63,10 +63,6 @@
 export default {
   name: 'RangeSlider',
   props: {
-    max: {
-      type: Number,
-      default: () => 1000
-    },
     name: {
       type: String,
       default: () => ''
@@ -74,8 +70,9 @@ export default {
   },
   data () {
     return {
+      max: 0,
       minPrice: 0,
-      maxPrice: 100
+      maxPrice: 0
     }
   },
   watch: {
@@ -90,10 +87,13 @@ export default {
       }
     }
   },
-  methods: {
-    setValue (val) {
-      console.log(val)
-    }
+  created () {
+    this.$store.getters['restaurant/getAllDishes'].forEach((item) => {
+      if (Number(item.regular_price) > this.max) {
+        this.max = item.regular_price
+      }
+    })
+    this.maxPrice = this.max
   }
 }
 </script>

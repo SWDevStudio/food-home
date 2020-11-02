@@ -6,7 +6,6 @@
         :filters="['Пицца', 'Суши', 'Бургеры']"
       />
       <RangeSlider
-        :max="100"
         name="Цена"
         class="restaurant__range-slider"
       />
